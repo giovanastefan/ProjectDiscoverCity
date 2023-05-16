@@ -13,19 +13,21 @@ import com.discoverCity.backend.model.Category;
 import com.discoverCity.backend.repository.CategoryRepository;
 
 @RestController
-@RequestMapping(value = "/categories")
+@RequestMapping(value = "/categorias")
 public class CategoryController {
 	
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
 	@GetMapping
-	List<Category> findAll(){
-		return categoryRepository.findAll();
+	public List<Category> findAll(){		
+		List<Category> list = categoryRepository.findAll();		
+		return list;
+		
 	}
 	
 	@GetMapping(value="/{id}")
-	Optional<Category> findById(@PathVariable Long id) {
+	public Optional<Category> findById(@PathVariable Long id) {
 		Optional<Category> obj = categoryRepository.findById(id);
 		return obj;
 	}
