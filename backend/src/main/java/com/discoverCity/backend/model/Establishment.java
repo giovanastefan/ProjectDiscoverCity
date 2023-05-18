@@ -1,7 +1,12 @@
 package com.discoverCity.backend.model;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,50 +14,60 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="estabelecimento")
+@Table(name = "estabelecimento")
 public class Establishment {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)	
-	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Long id;
-	
-	@Column(name="nome")
+
+	@Column(name = "nome")
 	private String nome;
-	
-	@Column(name="media_nota")
+
+	@Column(name = "media_nota")
 	private double notaMedia;
-	
-	@Column(name="descricao")
+
+	@Column(name = "descricao")
 	private String descricao;
-	
-	@Column(name="site")
+
+	@Column(name = "site")
 	private String site;
-	
-	@Column(name="imagem")
+
+	@Column(name = "imagem")
 	private String imagem;
-	
-	@Column(name="inicio_funcionamento")
+
+	@Column(name = "inicio_funcionamento")
 	private LocalTime inicioFunciomento;
-	
-	@Column(name="fim_funcionamento")
+
+	@Column(name = "fim_funcionamento")
 	private LocalTime fimFuncionamento;
-	
-	@Column(name="dias_funcionamento")
+
+	@Column(name = "dias_funcionamento")
 	private String diasFunciomento;
-	
-	@Column(name="menu_url")
+
+	@Column(name = "menu_url")
 	private String menuUrl;
-	
-	@Column(name="tipo_pagamento")
+
+	@Column(name = "tipo_pagamento")
 	private String tipoPagamento;
-		
+
 	@ManyToOne
-	@JoinColumn(name="id_categoria")
+	@JoinColumn(name = "id_categoria")
 	private Category categoria;
+
+	/*
+	 * @OneToOne(mappedBy = "estabelecimento", cascade = CascadeType.ALL) private
+	 * Endereco endereco;
+	 */
+
+	@OneToMany(mappedBy = "estabelecimento")
+	private List<Avaliacao> avaliacoes = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -149,7 +164,20 @@ public class Establishment {
 	public void setCategoria(Category categoria) {
 		this.categoria = categoria;
 	}
-	
-	
+
+	public List<Avaliacao> getAvaliacoes() {
+		return avaliacoes;
+	}
+
+	/*public void setAvaliacoes(List<Avaliacao> avaliacoes) {
+		this.avaliacoes = avaliacoes;
+	}*/
+
+	/*
+	 * public Endereco getEndereco() { return endereco; }
+	 * 
+	 * public void setEndereco(Endereco endereco) { this.endereco = endereco; }
+	 */
+
 	
 }

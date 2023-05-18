@@ -43,9 +43,14 @@ public class Category implements Serializable {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
+    
 
 	public List<Establishment> getEstabelecimentos() {
 		return estabelecimentos;
+	}    
+
+	public void setEstabelecimentos(List<Establishment> estabelecimentos) {
+		this.estabelecimentos = estabelecimentos;
 	}
 
 }

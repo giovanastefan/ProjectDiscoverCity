@@ -9,26 +9,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.discoverCity.backend.model.Avaliacao;
 import com.discoverCity.backend.model.Category;
-import com.discoverCity.backend.repository.CategoryRepository;
+import com.discoverCity.backend.repository.AvaliacaoRepository;
 
 @RestController
-@RequestMapping(value = "/categorias")
-public class CategoryController {
+@RequestMapping(value = "/avaliacoes")
+public class AvalicaoController {
 	
 	@Autowired
-	private CategoryRepository categoryRepository;
+	private AvaliacaoRepository avaliacaoRepository;
 	
 	@GetMapping
-	public List<Category> findAll(){		
-		List<Category> list = categoryRepository.findAll();		
-		return list;		
+	public List<Avaliacao> findAll(){		
+		List<Avaliacao> list = avaliacaoRepository.findAll();		
+		return list;
+		
 	}
 	
-	@GetMapping(value="/{id}")
-	public Optional<Category> findById(@PathVariable Long id) {
-		Optional<Category> obj = categoryRepository.findById(id);
-		return obj;
-	}
 
 }
