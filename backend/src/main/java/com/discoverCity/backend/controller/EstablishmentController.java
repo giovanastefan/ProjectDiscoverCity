@@ -19,20 +19,16 @@ public class EstablishmentController {
 	@Autowired
 	private EstablishmentRepository establishmentRepository;
 
-	/*@GetMapping
+	@GetMapping
 	public List<Establishment> findAll() {
 		List<Establishment> list = establishmentRepository.findAll();
 		return list;
 	}
 
-	/*@GetMapping(value="/filter") 
-	public Establishment findById(String city) {
-		return (Establishment) establishmentRepository.findByCity(city);
-	}*/
-	
-	@GetMapping(value="/todos")
-	public List<Establishment> findTodos() {
-		List<Establishment> list = establishmentRepository.findTodos();
+	@GetMapping(value="/city") 
+	public List<Establishment> findByCity(@RequestParam("cidade") String cidade) {
+		List<Establishment> list = establishmentRepository.findByCity(cidade);
 		return list;
 	}
+	
 }
