@@ -4,9 +4,6 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,7 +12,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -61,10 +57,8 @@ public class Establishment {
 	@JoinColumn(name = "id_categoria")
 	private Category categoria;
 
-	/*
-	 * @OneToOne(mappedBy = "estabelecimento", cascade = CascadeType.ALL) private
-	 * Endereco endereco;
-	 */
+	@OneToMany(mappedBy = "estabelecimento")
+	private List<Endereco> endereco = new ArrayList<>();
 
 	@OneToMany(mappedBy = "estabelecimento")
 	private List<Avaliacao> avaliacoes = new ArrayList<>();
@@ -169,15 +163,17 @@ public class Establishment {
 		return avaliacoes;
 	}
 
-	/*public void setAvaliacoes(List<Avaliacao> avaliacoes) {
-		this.avaliacoes = avaliacoes;
-	}*/
-
 	/*
-	 * public Endereco getEndereco() { return endereco; }
-	 * 
-	 * public void setEndereco(Endereco endereco) { this.endereco = endereco; }
+	 * public void setAvaliacoes(List<Avaliacao> avaliacoes) { this.avaliacoes =
+	 * avaliacoes; }
 	 */
 
-	
+	public List<Endereco> getEndereco() {
+		return endereco;
+	}
+
+	/*public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}*/
+
 }

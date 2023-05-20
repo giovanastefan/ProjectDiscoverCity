@@ -9,8 +9,11 @@ import com.discoverCity.backend.model.Establishment;
 
 public interface EstablishmentRepository extends JpaRepository<Establishment, Long> {
 	
-	//@Query(value= "SELECT * FROM estabelecimento WHERE id=1")
-	//List<Establishment> findByNumero(Long id);
+	/*@Query(value= "SELECT e FROM Establishment e JOIN e.endereco en WHERE en.cidade = :cidade")
+	List<Establishment> findByCity(@Param("cidade") String cidade);*/
+	
+	@Query(value="SELECT e FROM Establishment e")
+	List<Establishment> findTodos();
 	
 
 }
