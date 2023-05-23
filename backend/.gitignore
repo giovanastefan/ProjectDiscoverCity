@@ -1,0 +1,50 @@
+# Maven build directory
+/target/
+
+# Gradle build directory
+/build/
+
+# IDE files
+/.idea
+/.vscode
+*.iml
+*.ipr
+*.iws
+
+# Application properties
+/application.properties
+/application.yml
+/application-dev.properties
+/application-dev.yml
+/application-prod.properties
+/application-prod.yml
+
+# Log files
+/logs/
+
+# Compiled Java classes
+*.class
+
+# Compiled Kotlin classes
+*.kotlin_module
+
+# Package files
+*.jar
+*.war
+*.ear
+
+# IntelliJ IDEA project files
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Eclipse project files
+.classpath
+.project
+.settings/
+
+# Miscellaneous
+*.log
+*.swp
+*~
