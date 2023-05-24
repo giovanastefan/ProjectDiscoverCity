@@ -19,10 +19,10 @@ const RegisterForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    axios.post("http://localhost:8080/usuario", user);
+  
+    createUser(user);
   };
-
+  
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUser((prevUser) => ({
       ...prevUser,
