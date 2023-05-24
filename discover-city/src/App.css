@@ -1,5 +1,11 @@
+@font-face {
+  font-family: 'RobotoCondensed-Bold';
+  src: url('./fonts/RobotoCondensed-Regular.ttf') format('truetype');
+}
+
 .App {
   text-align: center;
+  font-family: 'RobotoCondensed-Bold', sans-serif;
 }
 
 .App-logo {

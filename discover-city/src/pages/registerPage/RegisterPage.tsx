@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { createUser } from "../../services/RegisterUser";
+import { MainContainer } from "./RegisterPage.styles";
 
 interface User {
   name: string;
@@ -14,15 +14,13 @@ const RegisterForm: React.FC = () => {
     email: "",
     password: "",
   });
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-  
+
     createUser(user);
   };
-  
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUser((prevUser) => ({
       ...prevUser,
@@ -31,33 +29,45 @@ const RegisterForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Nome"
-        name="name"
-        value={user.name}
-        onChange={handleInputChange}
-      />
-      <input
-        type="email"
-        placeholder="Email"
-        name="email"
-        value={user.email}
-        onChange={handleInputChange}
-      />
-      <input
-        type="password"
-        placeholder="Senha"
-        name="password"
-        value={user.password}
-        onChange={handleInputChange}
-      />
-      <button type="submit" disabled={loading}>
-        {loading ? "Registrando..." : "Registrar"}
-      </button>
-      {error && <p>{error}</p>}
-    </form>
+    <MainContainer className="d-flex justify-content-center align-items-center vh-100">
+      <form onSubmit={handleSubmit} className="w-50">
+        {/*Logo should be here*/}
+        <div className="title">Register</div>
+        <div className="mb-3">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Name"
+            name="name"
+            value={user.name}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="mb-3">
+          <input
+            type="email"
+            className="form-control"
+            placeholder="Email"
+            name="email"
+            value={user.email}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="mb-3">
+          <input
+            type="password"
+            className="form-control"
+            placeholder="Password"
+            name="password"
+            value={user.password}
+            onChange={handleInputChange}
+          />
+        </div>
+        <button type="submit" className="btn btn-primary">
+          Register
+        </button>
+      </form>
+    </MainContainer>
   );
 };
 
