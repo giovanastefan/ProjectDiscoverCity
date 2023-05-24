@@ -10,7 +10,7 @@ const HomePage = () => {
   };
   return (
     <MenuContainer>
-      <nav className="navbar navbar-expand-md" style={{ backgroundColor: '#ffd11a'}}>
+      <nav className="navbar navbar-expand-md" style={{ backgroundColor: ' #ffd11a', padding: '6px'}}>
         <a className="navbar-brand" href="/">
           Logo
         </a>
@@ -31,17 +31,17 @@ const HomePage = () => {
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">
+                Favorites
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">
+                Search
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">
                 About
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Services
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Contact
               </a>
             </li>
             <li className="nav-item">
