@@ -24,4 +24,17 @@ public class UserController {
     List<User> getAllUsers(){
         return userRepository.findAll();
     }
+
+    @PostMapping("/login")
+    public String login(@RequestBody User loginRequest) {
+        String username = loginRequest.getEmail();
+        String password = loginRequest.getSenha();
+
+        User user = userRepository.findByEmail(username);
+        if (user != null && user.getSenha().equals(password)) {
+            return "Login successful";
+        } else {
+            return "Invalid username or password";
+        }
+    }
 }
