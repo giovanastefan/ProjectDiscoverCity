@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { MainContainer } from "./LoginPage.styles";
 import { useNavigate } from 'react-router-dom';
+import { loginUser } from "../../services/Login";
 
 interface UserLogin {
   email: string;
@@ -18,7 +19,7 @@ const LoginForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    /*should call metod to login */
+    loginUser(user);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

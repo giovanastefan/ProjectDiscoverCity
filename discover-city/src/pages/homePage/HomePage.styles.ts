@@ -11,4 +11,9 @@ export const MenuContainer = styled.div`
     background-color: #ffcc00;
     border-color: #ffcc00;
   }
+
+  button:active {
+    background-color: #ffcc00;
+    border-color: #ffcc00;
+  }
 `;

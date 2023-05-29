@@ -1,12 +1,10 @@
 package com.discoverCity.backend.controller;
 
+import com.discoverCity.backend.exception.UnauthorizedException;
 import com.discoverCity.backend.model.User;
 import com.discoverCity.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,7 +32,7 @@ public class UserController {
         if (user != null && user.getSenha().equals(password)) {
             return "Login successful";
         } else {
-            return "Invalid username or password";
+            throw new UnauthorizedException("Invalid login credentials");
         }
     }
 }

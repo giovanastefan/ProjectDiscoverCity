@@ -45,7 +45,7 @@ const HomePage = () => {
               </a>
             </li>
             <li className="nav-item">
-              <button className="btn btn-primary" onClick={() => handleClickLogin()}>Login</button>
+              <button onClick={handleClickLogin}>Login</button>
             </li>
           </ul>
         </div>
