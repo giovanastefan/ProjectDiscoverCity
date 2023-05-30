@@ -62,6 +62,11 @@ public class Establishment {
 
 	@OneToMany(mappedBy = "estabelecimento")
 	private List<Avaliacao> avaliacoes = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "estabelecimmento")
+	private List<Cupom> cupons = new ArrayList<>();
+	
+	
 
 	public Long getId() {
 		return id;
@@ -175,5 +180,9 @@ public class Establishment {
 	/*public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}*/
+	
+	public List<Cupom> getCupom() {
+		return cupons;
+	}
 
 }
