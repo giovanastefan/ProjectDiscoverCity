@@ -62,11 +62,6 @@ public class Establishment {
 
 	@OneToMany(mappedBy = "estabelecimento")
 	private List<Avaliacao> avaliacoes = new ArrayList<>();
-	
-	@OneToMany(mappedBy = "estabelecimmento")
-	private List<Cupom> cupons = new ArrayList<>();
-	
-	
 
 	public Long getId() {
 		return id;
@@ -164,25 +159,44 @@ public class Establishment {
 		this.categoria = categoria;
 	}
 
+	public List<Endereco> getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(List<Endereco> endereco) {
+		this.endereco = endereco;
+	}
+
 	public List<Avaliacao> getAvaliacoes() {
 		return avaliacoes;
 	}
+
+	public void setAvaliacoes(List<Avaliacao> avaliacoes) {
+		this.avaliacoes = avaliacoes;
+	}
+	//	@OneToMany(mappedBy = "estabelecimmento")
+//	private List<Cupom> cupons = new ArrayList<>();
+	
+	
+	// public List<Avaliacao> getAvaliacoes() {
+//		return avaliacoes;
+//	}
 
 	/*
 	 * public void setAvaliacoes(List<Avaliacao> avaliacoes) { this.avaliacoes =
 	 * avaliacoes; }
 	 */
 
-	public List<Endereco> getEndereco() {
-		return endereco;
-	}
+//	public List<Endereco> getEndereco() {
+//		return endereco;
+//	}
 
 	/*public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}*/
 	
-	public List<Cupom> getCupom() {
-		return cupons;
-	}
+//	public List<Cupom> getCupom() {
+//		return cupons;
+//	}
 
 }
