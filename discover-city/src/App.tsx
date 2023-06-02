@@ -1,10 +1,10 @@
-import React from 'react';
-import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from './pages/homePage/HomePage';
-import LoginForm from './pages/loginPage/LoginPage';
-import RegisterForm from './pages/registerPage/RegisterPage';
-import 'bootstrap/dist/css/bootstrap.css';
+import React from "react";
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/homePage/HomePage";
+import LoginForm from "./pages/loginPage/LoginPage";
+import RegisterForm from "./pages/registerPage/RegisterPage";
+import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
   return (

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { MainContainer } from "./LoginPage.styles";
+import { MainContainer, LoginContainer } from "./LoginPage.styles";
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from "../../services/Login";
+import { ReactComponent as Logo } from '../../assets/discoverCity.svg';
+
 
 interface UserLogin {
   email: string;
@@ -35,8 +37,9 @@ const LoginForm: React.FC = () => {
 
   return (
     <MainContainer className="d-flex justify-content-center align-items-center vh-100">
+      <LoginContainer>
       <form onSubmit={handleSubmit} className="w-50">
-        {/*Logo should be here*/}
+        <Logo />
         <div className="title">Login</div>
         <div className="mb-3">
           <input
@@ -58,14 +61,12 @@ const LoginForm: React.FC = () => {
             onChange={handleInputChange}
           />
         </div>
-        <div>Not register yet? Click here</div>
+        <div onClick={handleClickRegister} className="register-button">Not register yet? Click here</div>
         <button type="submit" className="btn btn-primary">
           Login
         </button>
-        <button className="btn btn-primary" onClick={handleClickRegister}>
-          Register
-        </button>
       </form>
+      </LoginContainer>
     </MainContainer>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { createUser } from "../../services/RegisterUser";
-import { MainContainer } from "./RegisterPage.styles";
+import { MainContainer, RegisterContainer } from "./RegisterPage.styles";
+import { ReactComponent as Logo } from '../../assets/discoverCity.svg';
 
 interface User {
   name: string;
@@ -30,8 +31,10 @@ const RegisterForm: React.FC = () => {
 
   return (
     <MainContainer className="d-flex justify-content-center align-items-center vh-100">
+      <RegisterContainer>
       <form onSubmit={handleSubmit} className="w-50">
-        {/*Logo should be here*/}
+        <Logo />
+        <div className="logo">DiscoverCity</div>
         <div className="title">Register</div>
         <div className="mb-3">
           <input
@@ -67,6 +70,7 @@ const RegisterForm: React.FC = () => {
           Register
         </button>
       </form>
+      </RegisterContainer>
     </MainContainer>
   );
 };
