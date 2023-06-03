@@ -25,4 +25,9 @@ public class SearchController {
     public List<Establishment> searchEstablishmentsByName(@RequestParam("name") String name) {
         return searchRepository.findByNomeContaining(name);
     }
+
+    @GetMapping("/establishmentsByCategories")
+    public List<Establishment> searchEstablishmentsByCategories(@RequestParam("categories") List<String> categories) {
+        return searchRepository.findByCategoria_CategoriaIn(categories);
+    }
 }
