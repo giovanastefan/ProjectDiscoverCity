@@ -24,13 +24,13 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody User loginRequest) {
+    public User login(@RequestBody User loginRequest) {
         String username = loginRequest.getEmail();
         String password = loginRequest.getSenha();
 
         User user = userRepository.findByEmail(username);
         if (user != null && user.getSenha().equals(password)) {
-            return "Login successful";
+            return user;
         } else {
             throw new UnauthorizedException("Invalid login credentials");
         }
