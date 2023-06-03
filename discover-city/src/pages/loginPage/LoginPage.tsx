@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { MainContainer, LoginContainer } from "./LoginPage.styles";
 import { useNavigate } from 'react-router-dom';
-import { loginUser } from "../../services/Login";
+import { useDispatch } from 'react-redux';
 import { ReactComponent as Logo } from '../../assets/discoverCity.svg';
-
+import { loginUserAction } from "../../actions/userAction";
 
 interface UserLogin {
   email: string;
@@ -12,6 +12,7 @@ interface UserLogin {
 
 const LoginForm: React.FC = () => {
   const navigate = useNavigate();
+  const dispatch : any = useDispatch();
 
   const [user, setUser] = useState<UserLogin>({
     email: "",
@@ -21,7 +22,14 @@ const LoginForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    loginUser(user);
+    try {
+      await dispatch(loginUserAction(user));
+
+      navigate('/');
+    } catch (error: any) {
+      //ajustar error para toast avisando ou algo do tipo
+      console.log(error.message);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
