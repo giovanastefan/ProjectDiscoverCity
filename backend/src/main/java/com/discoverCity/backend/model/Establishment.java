@@ -65,6 +65,9 @@ public class Establishment {
 	
 	@OneToMany(mappedBy = "establishment")
 	private List<Coupon> coupon = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "establishment")
+	private List<Contact> contacts = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -184,6 +187,14 @@ public class Establishment {
 
 	public void setCoupon(List<Coupon> coupon) {
 		this.coupon = coupon;
+	}
+
+	public List<Contact> getContacts() {
+		return contacts;
+	}
+
+	public void setContacts(List<Contact> contacts) {
+		this.contacts = contacts;
 	}
 	
 	
