@@ -62,6 +62,9 @@ public class Establishment {
 
 	@OneToMany(mappedBy = "estabelecimento")
 	private List<Avaliacao> avaliacoes = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "establishment")
+	private List<Coupon> coupon = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -174,29 +177,15 @@ public class Establishment {
 	public void setAvaliacoes(List<Avaliacao> avaliacoes) {
 		this.avaliacoes = avaliacoes;
 	}
-	//	@OneToMany(mappedBy = "estabelecimmento")
-//	private List<Cupom> cupons = new ArrayList<>();
+
+	public List<Coupon> getCoupon() {
+		return coupon;
+	}
+
+	public void setCoupon(List<Coupon> coupon) {
+		this.coupon = coupon;
+	}
 	
 	
-	// public List<Avaliacao> getAvaliacoes() {
-//		return avaliacoes;
-//	}
-
-	/*
-	 * public void setAvaliacoes(List<Avaliacao> avaliacoes) { this.avaliacoes =
-	 * avaliacoes; }
-	 */
-
-//	public List<Endereco> getEndereco() {
-//		return endereco;
-//	}
-
-	/*public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}*/
 	
-//	public List<Cupom> getCupom() {
-//		return cupons;
-//	}
-
 }
