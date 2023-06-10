@@ -36,6 +36,9 @@ public class Avaliacao {
 	@Column(name="data_avaliacao")
 	private Date dataAvaliacao;
 	
+	@Column(name="favorito")
+	private boolean isFavorito;
+	
 	public Avaliacao() {
 		
 	}
@@ -79,7 +82,13 @@ public class Avaliacao {
 	public void setDataAvaliacao(Date dataAvaliacao) {
 		this.dataAvaliacao = dataAvaliacao;
 	}
-	
-	
+
+	public boolean isFavorito() {
+		return isFavorito;
+	}
+
+	public void setFavorito(boolean isFavorito) {
+		this.isFavorito = isFavorito;
+	}
 
 }
