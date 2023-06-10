@@ -1,13 +1,14 @@
 package com.discoverCity.backend.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name="usuario")
@@ -16,8 +17,16 @@ public class User {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @NotBlank(message="Required field")
     private String nome;
+    
+    @Email(message="This e-mail is not valid")
+    @Pattern(regexp=".+@.+\\..+", message="Please provide a valid email address")
     private String email;
+    
+    @NotBlank(message="Required field")
+    @Size(min = 6, max = 10, message ="The password must be between 6 and 10 digits")
     private String senha;
     
 

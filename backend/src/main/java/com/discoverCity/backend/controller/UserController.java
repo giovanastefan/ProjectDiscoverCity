@@ -1,12 +1,19 @@
 package com.discoverCity.backend.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.discoverCity.backend.exception.UnauthorizedException;
 import com.discoverCity.backend.model.User;
 import com.discoverCity.backend.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import jakarta.validation.Valid;
 
 @RestController
 public class UserController {
@@ -14,12 +21,18 @@ public class UserController {
     private UserRepository userRepository;
 
     @PostMapping("/usuario")
-    User newUser(@RequestBody User newUser) {
-        return userRepository.save(newUser);
+    public String newUser(@Valid @RequestBody User newUser, BindingResult error) {
+        if(error.hasErrors()) {
+        	return "Invalid fields";
+        }
+        else {
+        	userRepository.save(newUser);
+        	return "Successfully registered user";
+        }  
     }
 
     @GetMapping("/usuarios")
-    List<User> getAllUsers(){
+    public List<User> getAllUsers(){
         return userRepository.findAll();
     }
 
