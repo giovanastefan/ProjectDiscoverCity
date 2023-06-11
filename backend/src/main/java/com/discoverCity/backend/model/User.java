@@ -1,5 +1,6 @@
 package com.discoverCity.backend.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,16 +19,18 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    @Column(name="nome")
     @NotBlank(message="Required field")
-    private String nome;
+    private String name;
     
     @Email(message="This e-mail is not valid")
     @Pattern(regexp=".+@.+\\..+", message="Please provide a valid email address")
     private String email;
     
+    @Column(name="senha")
     @NotBlank(message="Required field")
     @Size(min = 6, max = 10, message ="The password must be between 6 and 10 digits")
-    private String senha;
+    private String password;
     
 
     public Long getId() {
@@ -38,12 +41,12 @@ public class User {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -54,12 +57,12 @@ public class User {
         this.email = email;
     }
 
-    public String getSenha() {
-        return senha;
+    public String getPassword() {
+        return password;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 }

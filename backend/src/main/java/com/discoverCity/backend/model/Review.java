@@ -15,7 +15,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "avaliacao")
-public class Avaliacao {
+public class Review {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,22 +24,22 @@ public class Avaliacao {
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "id_estabelecimento")
-	private Establishment estabelecimento;
+	private Establishment establishment;
 	
 	@ManyToOne
 	@JoinColumn(name="id_usuario")
-	private User usuario;	
+	private User user;	
 	
 	@Column(name="nota")
-	private double nota;
+	private double rating;
 	
 	@Column(name="data_avaliacao")
-	private Date dataAvaliacao;
+	private Date reviewDate;
 	
 	@Column(name="favorito")
-	private boolean isFavorito;
+	private Boolean isFavorite;
 	
-	public Avaliacao() {
+	public Review() {
 		
 	}
 
@@ -51,44 +51,44 @@ public class Avaliacao {
 		this.id = id;
 	}
 
-	/*public Establishment getEstabelecimento() {
-		return estabelecimento;
+	public Establishment getEstablishment() {
+		return establishment;
 	}
 
-	public void setEstabelecimento(Establishment estabelecimento) {
-		this.estabelecimento = estabelecimento;
-	}*/
-
-	public User getUsuario() {
-		return usuario;
+	public void setEstablishment(Establishment establishment) {
+		this.establishment = establishment;
 	}
 
-	public void setUsuario(User usuario) {
-		this.usuario = usuario;
+	public User getUser() {
+		return user;
 	}
 
-	public double getNota() {
-		return nota;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public void setNota(double nota) {
-		this.nota = nota;
+	public double getRating() {
+		return rating;
 	}
 
-	public Date getDataAvaliacao() {
-		return dataAvaliacao;
+	public void setRating(double rating) {
+		this.rating = rating;
 	}
 
-	public void setDataAvaliacao(Date dataAvaliacao) {
-		this.dataAvaliacao = dataAvaliacao;
+	public Date getReviewDate() {
+		return reviewDate;
 	}
 
-	public boolean isFavorito() {
-		return isFavorito;
+	public void setReviewDate(Date reviewDate) {
+		this.reviewDate = reviewDate;
 	}
 
-	public void setFavorito(boolean isFavorito) {
-		this.isFavorito = isFavorito;
+	public Boolean isFavorite() {
+		return isFavorite;
+	}
+
+	public void setFavorite(Boolean isFavorite) {
+		this.isFavorite = isFavorite;
 	}
 
 }

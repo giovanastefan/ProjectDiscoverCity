@@ -23,11 +23,11 @@ public class SearchController {
 
     @GetMapping("/establishments")
     public List<Establishment> searchEstablishmentsByName(@RequestParam("name") String name) {
-        return searchRepository.findByNomeContaining(name);
+        return searchRepository.findByNameContaining(name);
     }
 
     @GetMapping("/establishmentsByCategories")
     public List<Establishment> searchEstablishmentsByCategories(@RequestParam("categories") List<String> categories) {
-        return searchRepository.findByCategoria_CategoriaIn(categories);
+        return searchRepository.findByCategory_CategoryIn(categories);
     }
 }

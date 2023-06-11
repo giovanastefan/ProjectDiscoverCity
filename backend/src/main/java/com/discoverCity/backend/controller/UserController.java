@@ -20,7 +20,7 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @PostMapping("/usuario")
+    @PostMapping("/register")
     public String newUser(@Valid @RequestBody User newUser, BindingResult error) {
         if(error.hasErrors()) {
         	return "Invalid fields";
@@ -31,7 +31,7 @@ public class UserController {
         }  
     }
 
-    @GetMapping("/usuarios")
+    @GetMapping("/users")
     public List<User> getAllUsers(){
         return userRepository.findAll();
     }
@@ -39,10 +39,10 @@ public class UserController {
     @PostMapping("/login")
     public User login(@RequestBody User loginRequest) {
         String username = loginRequest.getEmail();
-        String password = loginRequest.getSenha();
+        String password = loginRequest.getPassword();
 
         User user = userRepository.findByEmail(username);
-        if (user != null && user.getSenha().equals(password)) {
+        if (user != null && user.getPassword().equals(password)) {
             return user;
         } else {
             throw new UnauthorizedException("Invalid login credentials");

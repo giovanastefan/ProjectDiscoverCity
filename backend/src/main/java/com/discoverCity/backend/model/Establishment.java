@@ -24,44 +24,44 @@ public class Establishment {
 	private Long id;
 
 	@Column(name = "nome")
-	private String nome;
+	private String name;
 
 	@Column(name = "media_nota")
-	private double notaMedia;
+	private double averageRating;
 
 	@Column(name = "descricao")
-	private String descricao;
+	private String description;
 
 	@Column(name = "site")
 	private String site;
 
 	@Column(name = "imagem")
-	private String imagem;
+	private String image;
 
 	@Column(name = "inicio_funcionamento")
-	private LocalTime inicioFunciomento;
+	private LocalTime startOperation;
 
 	@Column(name = "fim_funcionamento")
-	private LocalTime fimFuncionamento;
+	private LocalTime endOperation;
 
 	@Column(name = "dias_funcionamento")
-	private String diasFunciomento;
+	private String workingDays;
 
 	@Column(name = "menu_url")
 	private String menuUrl;
 
 	@Column(name = "tipo_pagamento")
-	private String tipoPagamento;
+	private String paymentTypes;
 
 	@ManyToOne
 	@JoinColumn(name = "id_categoria")
-	private Category categoria;
+	private Category category;
 
-	@OneToMany(mappedBy = "estabelecimento")
-	private List<Endereco> endereco = new ArrayList<>();
+	@OneToMany(mappedBy = "establishment")
+	private List<Address> address = new ArrayList<>();
 
-	@OneToMany(mappedBy = "estabelecimento")
-	private List<Avaliacao> avaliacoes = new ArrayList<>();
+	@OneToMany(mappedBy = "establishment")
+	private List<Review> reviews = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "establishment")
 	private List<Coupon> coupon = new ArrayList<>();
@@ -77,28 +77,28 @@ public class Establishment {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public double getNotaMedia() {
-		return notaMedia;
+	public double getAverageRating() {
+		return averageRating;
 	}
 
-	public void setNotaMedia(double notaMedia) {
-		this.notaMedia = notaMedia;
+	public void setAverageRating(double averageRating) {
+		this.averageRating = averageRating;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getSite() {
@@ -109,36 +109,36 @@ public class Establishment {
 		this.site = site;
 	}
 
-	public String getImagem() {
-		return imagem;
+	public String getImage() {
+		return image;
 	}
 
-	public void setImagem(String imagem) {
-		this.imagem = imagem;
+	public void setImage(String image) {
+		this.image = image;
 	}
 
-	public LocalTime getInicioFunciomento() {
-		return inicioFunciomento;
+	public LocalTime getStartOperation() {
+		return startOperation;
 	}
 
-	public void setInicioFunciomento(LocalTime inicioFunciomento) {
-		this.inicioFunciomento = inicioFunciomento;
+	public void setStartOperation(LocalTime startOperation) {
+		this.startOperation = startOperation;
 	}
 
-	public LocalTime getFimFuncionamento() {
-		return fimFuncionamento;
+	public LocalTime getEndOperation() {
+		return endOperation;
 	}
 
-	public void setFimFuncionamento(LocalTime fimFuncionamento) {
-		this.fimFuncionamento = fimFuncionamento;
+	public void setEndOperation(LocalTime endOperation) {
+		this.endOperation = endOperation;
 	}
 
-	public String getDiasFunciomento() {
-		return diasFunciomento;
+	public String getWorkingDays() {
+		return workingDays;
 	}
 
-	public void setDiasFunciomento(String diasFunciomento) {
-		this.diasFunciomento = diasFunciomento;
+	public void setWorkingDays(String workingDays) {
+		this.workingDays = workingDays;
 	}
 
 	public String getMenuUrl() {
@@ -149,36 +149,36 @@ public class Establishment {
 		this.menuUrl = menuUrl;
 	}
 
-	public String getTipoPagamento() {
-		return tipoPagamento;
+	public String getPaymentTypes() {
+		return paymentTypes;
 	}
 
-	public void setTipoPagamento(String tipoPagamento) {
-		this.tipoPagamento = tipoPagamento;
+	public void setPaymentTypes(String paymentTypes) {
+		this.paymentTypes = paymentTypes;
 	}
 
-	public Category getCategoria() {
-		return categoria;
+	public Category getCategory() {
+		return category;
 	}
 
-	public void setCategoria(Category categoria) {
-		this.categoria = categoria;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
-	public List<Endereco> getEndereco() {
-		return endereco;
+	public List<Address> getAddress() {
+		return address;
 	}
 
-	public void setEndereco(List<Endereco> endereco) {
-		this.endereco = endereco;
+	public void setAddress(List<Address> address) {
+		this.address = address;
 	}
 
-	public List<Avaliacao> getAvaliacoes() {
-		return avaliacoes;
+	public List<Review> getReviews() {
+		return reviews;
 	}
 
-	public void setAvaliacoes(List<Avaliacao> avaliacoes) {
-		this.avaliacoes = avaliacoes;
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
 	}
 
 	public List<Coupon> getCoupon() {
@@ -196,7 +196,5 @@ public class Establishment {
 	public void setContacts(List<Contact> contacts) {
 		this.contacts = contacts;
 	}
-	
-	
 	
 }

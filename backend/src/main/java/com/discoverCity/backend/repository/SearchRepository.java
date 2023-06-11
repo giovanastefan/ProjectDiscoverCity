@@ -7,6 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface SearchRepository extends JpaRepository<Establishment, Long> {
-    List<Establishment> findByNomeContaining(String nome);
-    List<Establishment> findByCategoria_CategoriaIn(List<String> categoria);
+    List<Establishment> findByNameContaining(String name);
+    List<Establishment> findByCategory_CategoryIn(List<String> category);
 }

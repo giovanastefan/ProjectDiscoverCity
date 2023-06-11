@@ -10,10 +10,10 @@ const API_URL = 'http://localhost:8080';
 
 export const createUser = async (user: User) => {
   try {
-    const response = await axios.post(`${API_URL}/usuario`, {
-      nome: user.name,
+    const response = await axios.post(`${API_URL}/register`, {
+      name: user.name,
       email: user.email,
-      senha: user.password,
+      password: user.password,
     });
 
     return response.data;

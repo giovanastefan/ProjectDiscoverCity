@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,11 +22,13 @@ public class Category implements Serializable {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String categoria;
+    
+    @Column(name="categoria")
+    private String category;
     
     @JsonIgnore
-	@OneToMany(mappedBy = "categoria")
-    private List<Establishment> estabelecimentos = new ArrayList<>();
+	@OneToMany(mappedBy = "category")
+    private List<Establishment> establishment = new ArrayList<>();
 
 
     public Long getId() {
@@ -36,21 +39,21 @@ public class Category implements Serializable {
         this.id = id;
     }
 
-    public String getCategoria() {
-        return categoria;
+    public String getCategory() {
+        return category;
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
+    public void setCategory(String category) {
+        this.category = category;
     }
     
 
-	public List<Establishment> getEstabelecimentos() {
-		return estabelecimentos;
+	public List<Establishment> getEstablishment() {
+		return establishment;
 	}    
 
-	public void setEstabelecimentos(List<Establishment> estabelecimentos) {
-		this.estabelecimentos = estabelecimentos;
+	public void setEstablishment(List<Establishment> establishment) {
+		this.establishment = establishment;
 	}
 
 }

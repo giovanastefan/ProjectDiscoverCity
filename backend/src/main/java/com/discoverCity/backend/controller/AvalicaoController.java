@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.discoverCity.backend.model.Avaliacao;
+import com.discoverCity.backend.model.Review;
 import com.discoverCity.backend.model.Category;
 import com.discoverCity.backend.repository.AvaliacaoRepository;
 
@@ -21,8 +21,8 @@ public class AvalicaoController {
 	private AvaliacaoRepository avaliacaoRepository;
 	
 	@GetMapping
-	public List<Avaliacao> findAll(){		
-		List<Avaliacao> list = avaliacaoRepository.findAll();		
+	public List<Review> findAll(){		
+		List<Review> list = avaliacaoRepository.findAll();		
 		return list;
 		
 	}

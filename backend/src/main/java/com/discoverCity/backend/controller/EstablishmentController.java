@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +12,7 @@ import com.discoverCity.backend.model.Establishment;
 import com.discoverCity.backend.repository.EstablishmentRepository;
 
 @RestController
-@RequestMapping(value = "/estabelecimentos")
+@RequestMapping(value = "/establishments")
 public class EstablishmentController {
 
 	@Autowired
@@ -26,8 +25,8 @@ public class EstablishmentController {
 	}
 
 	@GetMapping(value="/city") 
-	public List<Establishment> findByCity(@RequestParam("cidade") String cidade) {
-		List<Establishment> list = establishmentRepository.findByCity(cidade);
+	public List<Establishment> findByCity(@RequestParam("city") String city) {
+		List<Establishment> list = establishmentRepository.findByCity(city);
 		return list;
 	}
 	
