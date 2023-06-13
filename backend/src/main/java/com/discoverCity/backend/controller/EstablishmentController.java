@@ -30,4 +30,6 @@ public class EstablishmentController {
 		return list;
 	}
 	
+	
+	
 }
