@@ -9,6 +9,11 @@ export const MenuContainer = styled.div`
     width: 64px;
     height: 64px;
   }
+  .title{
+    color: white;
+    padding-left: 12px;
+    padding-top: 6px;
+  }
   button {
     background-color: white;
     border: none;

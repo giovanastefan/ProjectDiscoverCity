@@ -7,17 +7,26 @@ import LoginForm from "./pages/loginPage/LoginPage";
 import RegisterForm from "./pages/registerPage/RegisterPage";
 import "bootstrap/dist/css/bootstrap.css";
 import store from './stores/userStore';
+import MenuPanel from "./pages/menuPanel/MenuPanel";
+import ExplorePage from "./pages/explorePage/ExplorePage";
+import ProfilePage from "./pages/profilePage/ProfilePage";
+import FavoritesPage from "./pages/favoritesPage/FavoritesPage";
 
 function App() {
   return (
     <Provider store={store}>
     <Router>
       <div className="App">
+      <MenuPanel>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/register" element={<RegisterForm />} />
+          <Route path="/explore" element={<ExplorePage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
         </Routes>
+      </MenuPanel>
       </div>
     </Router>
     </Provider>
