@@ -1,28 +1,25 @@
 package com.discoverCity.backend.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.discoverCity.backend.model.Review;
-import com.discoverCity.backend.model.Category;
-import com.discoverCity.backend.repository.AvaliacaoRepository;
+import com.discoverCity.backend.repository.ReviewRepository;
 
 @RestController
-@RequestMapping(value = "/avaliacoes")
-public class AvalicaoController {
+@RequestMapping(value = "/reviews")
+public class ReviewController {
 	
 	@Autowired
-	private AvaliacaoRepository avaliacaoRepository;
+	private ReviewRepository reviewRepository;
 	
 	@GetMapping
 	public List<Review> findAll(){		
-		List<Review> list = avaliacaoRepository.findAll();		
+		List<Review> list = reviewRepository.findAll();		
 		return list;
 		
 	}
