@@ -18,46 +18,46 @@ public class SearchCustomRepository {
 		this.entityManager = entityManager;
 	}
 
-	public List<Establishment> find(String name, String category, String city, Double rating){
-		
+	public List<Establishment> find(String name, String category, String city, Double rating) {
+
 		String query = "SELECT e FROM Establishment e JOIN e.category c LEFT JOIN e.address ad WHERE 2 = 2";
-		
-		if(name != null) {
-			query += "AND e.name LIKE CONCAT('%', :name, '%')";		
+
+		if (name != null) {
+			query += "AND e.name LIKE CONCAT('%', :name, '%')";
 		}
-		
-		if(category != null) {
+
+		if (category != null) {
 			query += " AND c.category = :category";
 		}
-		
-		if(city != null) {
+
+		if (city != null) {
 			query += " AND ad.city = :city";
 		}
-		
-		if(rating != null) {
-			query += " AND e.averageRating >= :rating"; 			
+
+		if (rating != null) {
+			query += " AND e.averageRating >= :rating";
 		}
-		
+
 		var q = entityManager.createQuery(query, Establishment.class);
-		
-		if(name != null) {
-			q.setParameter("name", name);			
+
+		if (name != null) {
+			q.setParameter("name", name);
 		}
-		
-		if(category != null) {
-			q.setParameter("category", category);	
+
+		if (category != null) {
+			q.setParameter("category", category);
 		}
-		
-		if(city != null) {
-			q.setParameter("city", city);	
+
+		if (city != null) {
+			q.setParameter("city", city);
 		}
-		
-		if(rating != null) {
-			q.setParameter("rating", rating);			
+
+		if (rating != null) {
+			q.setParameter("rating", rating);
 		}
-		
+
 		return q.getResultList();
-		
-	}
 
 	}
+
+}
