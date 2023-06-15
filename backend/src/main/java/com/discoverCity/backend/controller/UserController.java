@@ -1,6 +1,7 @@
 package com.discoverCity.backend.controller;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +29,15 @@ public class UserController {
         	return "Invalid fields";
         }
         else {
-        	userRepository.save(newUser);
-        	return "Successfully registered user";
+        	User user = userRepository.findByEmail(newUser.getEmail());
+        	if(Objects.isNull(user)) {
+        		userRepository.save(newUser);
+            	return "Successfully registered user";
+        	}
+        	else {
+        		return "User already registered";
+        	}
+        	
         }  
     }
 
