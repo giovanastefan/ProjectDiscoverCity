@@ -2,6 +2,7 @@ package com.discoverCity.backend.repository;
 
 import java.util.List;
 
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.discoverCity.backend.model.Establishment;
@@ -10,35 +11,31 @@ import jakarta.persistence.EntityManager;
 
 @Repository
 public class SearchCustomRepository {
-	
+
 	private final EntityManager entityManager;
-	
+
 	public SearchCustomRepository(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
-	
+
 	public List<Establishment> find(String name, String category, String city, Double rating){
 		
-		String query = "SELECT e FROM Establishment e ";
-		String condition = " WHERE ";
+		String query = "SELECT e FROM Establishment e JOIN e.category c LEFT JOIN e.address ad WHERE 2 = 2";
 		
 		if(name != null) {
-			query += condition + "e.name = :name";
-			condition = " AND ";			
+			query += "AND e.name LIKE CONCAT('%', :name, '%')";		
 		}
 		
 		if(category != null) {
-			query += condition + "JOIN e.category c WHERE c.category = :category";
-			condition = " AND ";
+			query += " AND c.category = :category";
 		}
 		
 		if(city != null) {
-			query += condition + "JOIN e.adress ad WHERE ad.city = :city";
-			condition = " AND ";
+			query += " AND ad.city = :city";
 		}
 		
 		if(rating != null) {
-			query += condition + "e.averageRating >= :rating"; 			
+			query += " AND e.averageRating >= :rating"; 			
 		}
 		
 		var q = entityManager.createQuery(query, Establishment.class);
@@ -63,7 +60,4 @@ public class SearchCustomRepository {
 		
 	}
 
-}
-
-
-
+	}

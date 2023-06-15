@@ -43,6 +43,5 @@ public class SearchController {
     		@RequestParam(value = "rating", required = false) Double rating
     		){
     	return searchCustomRepository.find(name, category, city, rating);
-    	
     }
 }
