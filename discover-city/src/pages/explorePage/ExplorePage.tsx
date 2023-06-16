@@ -1,5 +1,5 @@
 
-import { CardsContainer } from "../CardsContainer/CardsContainer";
+import { CardsContainer } from "../cardsContainer/CardsContainer";
 import {
   Container,
   SearchContainer,
@@ -47,10 +47,10 @@ const ExplorePage = () => {
       </SearchContainer>
       <EstablishmentContainer>
         <p className="suggested">Maybe you like: </p>
-        <CardsContainer
-          itens={data}
+        {/* <CardsContainer
+          items={data}
           handleOpenModal={() => "Here is when open element"}
-        />
+        /> */}
       </EstablishmentContainer>
     </Container>
   );

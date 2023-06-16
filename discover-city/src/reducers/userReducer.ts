@@ -4,9 +4,9 @@ import { loginUserAction } from "../actions/userAction";
 const initialState = {
   user: {
     id: '',
-    nome: '',
+    name: '',
     email: '',
-    senha: ''
+    password: ''
   },
   loading: false,
 };

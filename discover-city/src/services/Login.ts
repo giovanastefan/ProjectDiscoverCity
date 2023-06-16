@@ -7,9 +7,9 @@ interface User {
 
 interface UserResponse {
   id: string;
-  nome: string;
+  name: string;
   email: string;
-  senha: string;
+  password: string;
 }
 
 const API_URL = 'http://localhost:8080';
@@ -18,7 +18,7 @@ export const loginUser = async (user: User): Promise<UserResponse> => {
   try {
     const response = await axios.post(`${API_URL}/login`, {
       email: user.email,
-      senha: user.password,
+      password: user.password,
     });
 
     return response.data;

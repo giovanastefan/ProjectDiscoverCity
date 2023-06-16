@@ -1,21 +1,22 @@
 import { CardEstablishment } from "../../components/CardEstablishment/CardEstablishment";
+import { Establishment } from "../../types/Establishment";
 
 interface Props {
-    /*Should change type here!! */
-    itens: Array<any>;
-    handleOpenModal: (id: String) => void;
+  items: Array<Establishment>;
+  handleOpenModal: (establishment: Establishment) => void;
 }
 
-export const CardsContainer = ({ itens, handleOpenModal } : Props) => {
+export const CardsContainer = ({ items, handleOpenModal }: Props) => {
   return (
     <div style={{ display: "flex", flexWrap: "wrap" }}>
-      {itens.map((e) => {
+      {items.map((e) => {
         return (
           <CardEstablishment
             image={e.image}
-            title={e.title}
-            onClick={() => handleOpenModal(e.id)}
+            title={e.name}
+            onClick={() => handleOpenModal(e)}
             description={e.description}
+            key={e.id}
           />
         );
       })}

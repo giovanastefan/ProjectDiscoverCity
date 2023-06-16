@@ -28,7 +28,7 @@ const LoginForm: React.FC = () => {
       navigate('/');
     } catch (error: any) {
       //ajustar error para toast avisando ou algo do tipo
-      console.log(error.message);
+      console.log("deu ruim", error.message);
     }
   };
 
