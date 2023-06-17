@@ -30,6 +30,9 @@ public class Review {
 	@JoinColumn(name="id_usuario")
 	private User user;	
 	
+	@Column(name="comentarios")
+	private String comment;
+	
 	@Column(name="nota")
 	private double rating;
 	
@@ -37,7 +40,7 @@ public class Review {
 	private Date reviewDate;
 	
 	@Column(name="favorito")
-	private Boolean isFavorite;
+	private Boolean favorite;
 	
 	public Review() {
 		
@@ -67,6 +70,14 @@ public class Review {
 		this.user = user;
 	}
 
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
 	public double getRating() {
 		return rating;
 	}
@@ -83,12 +94,12 @@ public class Review {
 		this.reviewDate = reviewDate;
 	}
 
-	public Boolean isFavorite() {
-		return isFavorite;
+	public Boolean getFavorite() {
+		return favorite;
 	}
 
-	public void setFavorite(Boolean isFavorite) {
-		this.isFavorite = isFavorite;
+	public void setFavorite(Boolean favorite) {
+		this.favorite = favorite;
 	}
 
 }

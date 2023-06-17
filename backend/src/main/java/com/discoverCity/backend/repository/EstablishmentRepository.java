@@ -13,4 +13,6 @@ public interface EstablishmentRepository extends JpaRepository<Establishment, Lo
 	@Query(value= "SELECT e FROM Establishment e JOIN e.address en WHERE en.city = :city")
 	List<Establishment> findByCity(@Param("city") String city);
 	
+	@Query(value="SELECT e FROM Establishment e ORDER BY e.averageRating DESC")
+	List<Establishment> bestRated();
 }

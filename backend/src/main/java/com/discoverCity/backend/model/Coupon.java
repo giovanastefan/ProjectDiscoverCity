@@ -34,7 +34,7 @@ public class Coupon {
 	public String description;
 	
 	@Column(name = "valido")
-	public boolean isValid;
+	public boolean valid;
 	
 	@JsonIgnore
 	@ManyToOne
@@ -97,12 +97,12 @@ public class Coupon {
 		this.description = description;
 	}
 
-	public boolean isValid() {
-		return isValid;
+	public boolean valid() {
+		return valid;
 	}
 
-	public void setValid(boolean isValid) {
-		this.isValid = isValid;
+	public void setIsValid(boolean valid) {
+		this.valid = valid;
 	}
 
 	public Establishment getEstablishment() {

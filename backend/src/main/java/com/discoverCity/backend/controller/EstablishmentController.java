@@ -42,6 +42,15 @@ public class EstablishmentController {
 		List<Establishment> list = establishmentRepository.findByCity(city);
 		return list;
 	}
+	
+	//Endpoint para retornar os 10 estabelecimentos mais bem avaliados
+	@GetMapping("/bests")
+	public List<Establishment> bestRated(){
+		List<Establishment> list = establishmentRepository.bestRated();		
+		List<Establishment> bests = list.subList(0, 9);
+		
+		return bests;
+	}
 
 	@PostMapping("/{establishmentId}/addReview")
 	public String addReviewToEstablishment(@PathVariable Long establishmentId, @RequestBody Review review) {

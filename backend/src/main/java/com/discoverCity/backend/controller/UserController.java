@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.discoverCity.backend.exception.UnauthorizedException;
+import com.discoverCity.backend.model.Establishment;
 import com.discoverCity.backend.model.User;
 import com.discoverCity.backend.repository.UserRepository;
 
@@ -52,6 +53,13 @@ public class UserController {
     	User user = userOptional.get();
     	
     	return user;
+    }
+    
+    //Método para retornar os estabelecimentos favoritos do usuário
+    @GetMapping("user/{id}/favorites")
+    public List<Establishment> getFavorites(@PathVariable Long id){
+    	List<Establishment> list = userRepository.favorites(id);
+    	return list;
     }
 
     @PostMapping("/login")
