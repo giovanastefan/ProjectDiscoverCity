@@ -1,5 +1,5 @@
 
-import { CardsContainer } from "../cardsContainer/CardsContainer";
+import { CardsContainer } from "../CardsContainer/CardsContainer";
 import {
   Container,
   SearchContainer,

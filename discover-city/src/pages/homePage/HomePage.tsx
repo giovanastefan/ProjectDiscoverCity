@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ModalEstablishment } from "../../components/ModalEstablishment/ModalEstablishment";
-import { CardsContainer } from "../cardsContainer/CardsContainer";
+import { CardsContainer } from "../CardsContainer/CardsContainer";
 import { Container } from "./HomePage.styles";
 import { Establishment } from "../../types/Establishment";
 import { useDispatch, useSelector } from "react-redux";
