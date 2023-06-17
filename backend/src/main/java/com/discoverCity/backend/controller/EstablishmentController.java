@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.discoverCity.backend.model.Address;
 import com.discoverCity.backend.model.Establishment;
+import com.discoverCity.backend.model.EstablishmentRequest;
 import com.discoverCity.backend.model.Review;
+import com.discoverCity.backend.repository.AddressRepository;
 import com.discoverCity.backend.repository.EstablishmentRepository;
 import com.discoverCity.backend.repository.ReviewRepository;
 
@@ -23,6 +26,8 @@ public class EstablishmentController {
 
 	@Autowired
 	private EstablishmentRepository establishmentRepository;
+	
+	@Autowired AddressRepository addressRepository;
 
 	@Autowired
 	private ReviewRepository reviewRepository;
@@ -50,6 +55,19 @@ public class EstablishmentController {
 		List<Establishment> bests = list.subList(0, 9);
 		
 		return bests;
+	}
+	
+	@PostMapping("/register")
+	public Establishment insert(@RequestBody EstablishmentRequest request) {
+		
+			Establishment establishment = request.getEstablishment();			
+			Address address = request.getAddress();
+			address.setEstablishment(establishment);
+			
+			Establishment obj = establishmentRepository.save(establishment);
+			Address adr = addressRepository.save(address);
+			
+			return obj;
 	}
 
 	@PostMapping("/{establishmentId}/addReview")
