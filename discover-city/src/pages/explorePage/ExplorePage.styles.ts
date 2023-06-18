@@ -20,11 +20,11 @@ export const SearchContainer = styled.div`
   }
 `;
 
-
 export const EstablishmentContainer = styled.div`
- display: flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   .suggested {
     color: white;

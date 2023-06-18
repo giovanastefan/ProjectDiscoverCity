@@ -1,57 +1,46 @@
-
+import { useState } from "react";
 import { CardsContainer } from "../CardsContainer/CardsContainer";
+import SearchContainer from "../searchContainer/SearchContainer";
 import {
   Container,
-  SearchContainer,
   EstablishmentContainer,
 } from "./ExplorePage.styles";
+import { Establishment } from "../../types/Establishment";
+import { ModalEstablishment } from "../../components/ModalEstablishment/ModalEstablishment";
 
 const ExplorePage = () => {
-  const data = [
-    {
-      id: 1,
-      title: "Bar do Ze",
-      description: "Barzinho do ze com muitas porções",
-      image: "",
-    },
-    {
-      id: 1,
-      title: "Bar do Ze",
-      description: "Barzinho do ze com muitas porções",
-      image: "",
-    },
-    {
-      id: 1,
-      title: "Bar do Ze",
-      description: "Barzinho do ze com muitas porções",
-      image: "",
-    },
-    {
-      id: 1,
-      title: "Bar do Ze",
-      description: "Barzinho do ze com muitas porções",
-      image: "",
-    },
-  ];
+  const [isOpen, setOpen] = useState(false);
+  const [selectedEstablishment, setSelectedEstablishment] = useState<Establishment>();
+  const [searchResults, setSearchResults] = useState<Establishment[]>([]);
+
+  const handleSearchResults = (results: Establishment[]) => {
+    setSearchResults(results);
+  };
+
+  const handleOpenModal = (establishment: Establishment) => {
+    setSelectedEstablishment(establishment); 
+    setOpen(true);
+  };
 
   return (
     <Container>
-      <SearchContainer>
-        <div className="input-group">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Search"
+      <SearchContainer onSearchResults={handleSearchResults} />
+
+      {searchResults.length > 0 ? (
+        <div>
+          {searchResults.length === 0 ? <h3>No establishments found!</h3> : <>
+          <ModalEstablishment
+            isOpen={isOpen}
+            handleClose={() => setOpen(false)}
+            establishment={selectedEstablishment}
           />
+          <CardsContainer
+            items={searchResults}
+            handleOpenModal={handleOpenModal}
+          />
+          </>}
         </div>
-      </SearchContainer>
-      <EstablishmentContainer>
-        <p className="suggested">Maybe you like: </p>
-        {/* <CardsContainer
-          items={data}
-          handleOpenModal={() => "Here is when open element"}
-        /> */}
-      </EstablishmentContainer>
+      ) : null}
     </Container>
   );
 };

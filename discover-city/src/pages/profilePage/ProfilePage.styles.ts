@@ -6,4 +6,22 @@ export const Container = styled.div`
   padding: 12px;
   color: white;
 
+  button {
+    background-color: white;
+    border: none;
+    color: #ffcc00;
+    margin: 10px;
+    font-size: 20px;
+  }
+
+  button:hover {
+    background-color: #ffcc00;
+    border-color: #ffcc00;
+  }
+
+  button:active {
+    background-color: #ffcc00;
+    border-color: #ffcc00;
+  }
+
 `;

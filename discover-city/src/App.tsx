@@ -11,6 +11,7 @@ import MenuPanel from "./pages/menuPanel/MenuPanel";
 import ExplorePage from "./pages/explorePage/ExplorePage";
 import ProfilePage from "./pages/profilePage/ProfilePage";
 import FavoritesPage from "./pages/favoritesPage/FavoritesPage";
+import RegisterEstablishment from "./pages/registerEstablishment/RegisterEstablishment";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/explore" element={<ExplorePage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="/registerEstablishment" element={<RegisterEstablishment />} />
         </Routes>
       </MenuPanel>
       </div>

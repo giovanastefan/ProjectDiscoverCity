@@ -49,7 +49,7 @@ const HomePage = () => {
     );
   };
 
-  return <Container>{loading ? <h1>Loading...</h1> : cards()}</Container>;
+  return <Container>{loading ? <h1 color="white">Loading...</h1> : cards()}</Container>;
 };
 
 export default HomePage;

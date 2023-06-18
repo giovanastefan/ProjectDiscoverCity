@@ -13,7 +13,7 @@ import com.discoverCity.backend.model.Category;
 import com.discoverCity.backend.repository.CategoryRepository;
 
 @RestController
-@RequestMapping(value = "/categorias")
+@RequestMapping(value = "/categories")
 public class CategoryController {
 	
 	@Autowired
