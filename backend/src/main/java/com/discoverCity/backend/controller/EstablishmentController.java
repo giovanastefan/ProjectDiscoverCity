@@ -77,7 +77,7 @@ public class EstablishmentController {
 	}
 
 	@PostMapping("/{establishmentId}/addReview")
-	public String addReviewToEstablishment(@PathVariable Long establishmentId, @RequestBody Review review, Long userId) {
+	public String addReviewToEstablishment(@PathVariable Long establishmentId, @RequestBody Review review, @RequestParam("userId") Long userId) {
 		try {
 			Optional<Establishment> establishmentOptional = establishmentRepository.findById(establishmentId);
 			Optional<User> userOptional = userRepository.findById(userId);

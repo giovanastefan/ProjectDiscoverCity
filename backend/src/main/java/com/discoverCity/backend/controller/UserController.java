@@ -38,7 +38,6 @@ public class UserController {
         	else {
         		return "User already registered";
         	}
-        	
         }  
     }
 
@@ -55,7 +54,6 @@ public class UserController {
     	return user;
     }
     
-    //Método para retornar os estabelecimentos favoritos do usuário
     @GetMapping("user/{id}/favorites")
     public List<Establishment> getFavorites(@PathVariable Long id){
     	List<Establishment> list = userRepository.favorites(id);
