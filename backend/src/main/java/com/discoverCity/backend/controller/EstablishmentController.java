@@ -100,9 +100,13 @@ public class EstablishmentController {
 				review.setEstablishment(establishment);
 				review.setUser(user);
 
-				establishmentRepository.save(establishment);
-				reviewRepository.save(review);
-				return "Review cadastrado com sucesso";
+				 if (review.getRating() >= 1 && review.getRating() <= 5) {
+		                establishmentRepository.save(establishment);
+		                reviewRepository.save(review);
+		                return "Review cadastrado com sucesso";
+		            } else {
+		                return "O valor da avaliação deve estar entre 1 e 5";
+		            }
 			} else {
 				return "Estabelecimento ou usuário não encontrado";
 			}
