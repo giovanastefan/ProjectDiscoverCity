@@ -21,7 +21,7 @@ interface Review {
     user: User;
     rating: number;
     reviewDate: string;
-    description: string;
+    comment: string;
     favorite: boolean;
 }
 

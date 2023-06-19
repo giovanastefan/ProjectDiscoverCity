@@ -29,21 +29,10 @@ export const ModalEstablishment = ({
 }: Props) => {
   const userState = useSelector((state: RootState) => state.userStore);
   const { id } = userState.user;
-
   const [showReviewForm, setShowReviewForm] = useState(false);
 
   const handleAddReview = () => {
     setShowReviewForm(true);
-  };
-
-  const renderFavorites = (): React.ReactNode => {
-    return establishment?.reviews.map((e) => {
-      return e.user.id === Number(id) && e.favorite ? (
-        <FaHeartBroken />
-      ) : (
-        <FaHeart />
-      );
-    });
   };
 
   return (
@@ -118,14 +107,14 @@ export const ModalEstablishment = ({
                       </span>
                     ))}
                   </div>
-                  <p className="review-description">{review.description}</p>
+                  <p className="review-description">{review.comment}</p>
                 </div>
               );
             })}
           </div>
 
           {showReviewForm && (
-            <ReviewComponent />
+            <ReviewComponent userId={id} establishmentId={establishment?.id} handleClose={() => setShowReviewForm(false)} />
           )}
         </Modal.Body>
 
@@ -133,7 +122,6 @@ export const ModalEstablishment = ({
           <Button variant="secondary" onClick={handleAddReview}>
             Add a review
           </Button>
-          <Button variant="secondary">{renderFavorites()}</Button>
         </Modal.Footer>
       </Modal>
     </Container>

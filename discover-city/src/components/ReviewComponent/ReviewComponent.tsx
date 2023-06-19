@@ -1,73 +1,105 @@
 import { useState } from "react";
+import {  StyledTextarea, StyledButton, StyledFormContainer, StyledHeading, StyledForm, StyledLabel, StyledInput } from './ReviewComponent.styles';
+import axios from "axios";
 
 interface ReviewFormData {
   rating: number;
   comment: string;
-  isFavorite: boolean;
+  favorite: boolean;
 }
 
-const ReviewComponent = () => {
+interface Props {
+  establishmentId?: number;
+  userId: string;
+  handleClose: () => void;
+}
+
+const ReviewComponent = ({ establishmentId, userId, handleClose } : Props) => {
   const [reviewFormData, setReviewFormData] = useState<ReviewFormData>({
     rating: 0,
     comment: "",
-    isFavorite: false,
+    favorite: false,
   });
 
   const handleReviewFormChange = (
     event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
   ) => {
-    const { name, value } = event.target;
-    setReviewFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
+    const { name, value, type } = event.target;
+
+    if (type === "checkbox") {
+      const target = event.target as HTMLInputElement;
+      setReviewFormData((prevFormData) => ({
+        ...prevFormData,
+        [name]: target.checked,
+      }));
+    } else {
+      setReviewFormData((prevFormData) => ({
+        ...prevFormData,
+        [name]: value,
+      }));
+    }
   };
 
-  const handleReviewFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleReviewFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    setReviewFormData({
-      rating: 0,
-      comment: "",
-      isFavorite: false,
-    });
+    try {
+
+      const response = await axios.post(
+        `http://localhost:8080/establishments/${establishmentId}/addReview?userId=${userId}`,
+        {
+          comment: reviewFormData.comment,
+          rating: reviewFormData.rating,
+          favorite: reviewFormData.favorite,
+        }
+      );
+
+      handleClose();
+
+      setReviewFormData({
+        rating: 0,
+        comment: "",
+        favorite: false,
+      });
+    } catch (error) {
+      console.error("Error registering the review:", error);
+    }
   };
+
   return (
-    <div>
-      <h5>Add a Review</h5>
-      <form onSubmit={handleReviewFormSubmit}>
-        <label>
+    <StyledFormContainer>
+      <StyledHeading>Add a Review</StyledHeading>
+      <StyledForm onSubmit={handleReviewFormSubmit}>
+        <StyledLabel>
           Rating:
-          <input
+          <StyledInput
             type="number"
             name="rating"
             value={reviewFormData.rating}
             onChange={handleReviewFormChange}
+            placeholder="Rating"
           />
-        </label>
-        <br />
-        <label>
-          Comment:
-          <textarea
+        </StyledLabel>
+        <StyledLabel>
+          <StyledTextarea
             name="comment"
             value={reviewFormData.comment}
             onChange={handleReviewFormChange}
+            placeholder="Coment here!"
           />
-        </label>
-        <br />
-        <label>
+        </StyledLabel>
+        <StyledLabel>
           Favorite:
-          <input
+          <StyledInput
             type="checkbox"
-            name="isFavorite"
-            checked={reviewFormData.isFavorite}
+            name="favorite"
+            checked={reviewFormData.favorite}
             onChange={handleReviewFormChange}
           />
-        </label>
-        <br />
-        <button type="submit">Submit Review</button>
-      </form>
-    </div>
+        </StyledLabel>
+        <StyledButton type="submit">Submit Review</StyledButton>
+      </StyledForm>
+    </StyledFormContainer>
   );
 };
 

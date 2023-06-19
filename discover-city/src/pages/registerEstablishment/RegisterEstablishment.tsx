@@ -32,6 +32,11 @@ const RegisterForm = () => {
     country: ''
   });
 
+  const [contact, setContact] = useState({
+    email: '',
+    phone: ''
+  });
+
   const [categories, setCategories] = useState(Array<Category>);
 
   useEffect(() => {
@@ -52,7 +57,8 @@ const RegisterForm = () => {
     // Prepare the data to send to the server
     const data = {
       establishment,
-      address
+      address,
+      contact,
     };
 
     // Send the data to the server (replace with your API endpoint)
@@ -100,6 +106,16 @@ const RegisterForm = () => {
     setAddress(prevState => ({
       ...prevState,
       [name]: value
+    }));
+  };
+
+  const handleContactChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+
+    // Update the contact state
+    setContact((prevState) => ({
+      ...prevState,
+      [name]: value,
     }));
   };
 
@@ -315,6 +331,30 @@ const RegisterForm = () => {
         </Select>
       </label>
       <br />
+
+      <label>
+            Email:
+            <Input
+              type="email"
+              name="email"
+              value={contact.email}
+              onChange={handleContactChange}
+              required
+            />
+          </label>
+          <br />
+
+          <label>
+            Phone:
+            <Input
+              type="tel"
+              name="phone"
+              value={contact.phone}
+              onChange={handleContactChange}
+              required
+            />
+          </label>
+          <br />
 
       <Button type="submit">Register</Button>
     </FormContainer>
