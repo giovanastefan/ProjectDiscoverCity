@@ -9,6 +9,7 @@ const initialState = {
     password: ''
   },
   loading: false,
+  error: '',
 };
 
 const userSlice = createSlice({
@@ -19,12 +20,19 @@ const userSlice = createSlice({
     builder
       .addCase(loginUserAction.pending, (state) => {
         state.loading = true;
+        state.error = '';
       })
       .addCase(loginUserAction.fulfilled, (state, action) => {
         return {
           ...state,
+          loading: false,
+          error: '',
           user: action.payload
         }
+      })
+      .addCase(loginUserAction.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload as string;
       });
   },
 });

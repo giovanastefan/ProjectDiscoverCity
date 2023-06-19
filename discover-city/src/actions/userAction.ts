@@ -1,4 +1,4 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { loginUser } from '../services/Login';
 
 interface User {
@@ -13,7 +13,7 @@ export const loginUserAction = createAsyncThunk(
       const response = await loginUser(user);
       return response;
     } catch (error: any) {
-        return rejectWithValue('An error occurred while login the user.');
+      return rejectWithValue('User or password is invalid');
     }
   }
 );

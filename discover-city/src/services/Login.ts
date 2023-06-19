@@ -23,10 +23,6 @@ export const loginUser = async (user: User): Promise<UserResponse> => {
 
     return response.data;
   } catch (error: any) {
-    if (error.response && error.response.data && error.response.data.message) {
-      throw new Error(error.response.data.message);
-    } else {
-      throw new Error('An error occurred while login the user.');
-    }
+      throw new Error(error.response.data.message);    
   }
 };
