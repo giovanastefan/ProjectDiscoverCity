@@ -13,14 +13,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.discoverCity.backend.model.Address;
+import com.discoverCity.backend.model.Contact;
 import com.discoverCity.backend.model.Establishment;
-import com.discoverCity.backend.model.EstablishmentRequest;
 import com.discoverCity.backend.model.Review;
 import com.discoverCity.backend.model.User;
 import com.discoverCity.backend.repository.AddressRepository;
+import com.discoverCity.backend.repository.ContactRepository;
 import com.discoverCity.backend.repository.EstablishmentRepository;
 import com.discoverCity.backend.repository.ReviewRepository;
 import com.discoverCity.backend.repository.UserRepository;
+import com.discoverCity.backend.requests.EstablishmentRequest;
 
 @RestController
 @RequestMapping(value = "/establishments")
@@ -30,13 +32,16 @@ public class EstablishmentController {
 	private EstablishmentRepository establishmentRepository;
 
 	@Autowired
-	AddressRepository addressRepository;
+	private AddressRepository addressRepository;
 
 	@Autowired
 	private ReviewRepository reviewRepository;
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private ContactRepository contactRepository;
 
 	@GetMapping
 	public List<Establishment> findAll() {
@@ -68,16 +73,22 @@ public class EstablishmentController {
 
 		Establishment establishment = request.getEstablishment();
 		Address address = request.getAddress();
+		Contact contact = request.getContact();
+		
 		address.setEstablishment(establishment);
+		contact.setEstablishment(establishment);
 
 		Establishment obj = establishmentRepository.save(establishment);
 		Address adr = addressRepository.save(address);
+		Contact cnt = contactRepository.save(contact);
 
 		return obj;
 	}
 
 	@PostMapping("/{establishmentId}/addReview")
-	public String addReviewToEstablishment(@PathVariable Long establishmentId, @RequestBody Review review, @RequestParam("userId") Long userId) {
+	public String addReviewToEstablishment(@PathVariable Long establishmentId,
+										   @RequestBody Review review,
+										   @RequestParam("userId") Long userId) {
 		try {
 			Optional<Establishment> establishmentOptional = establishmentRepository.findById(establishmentId);
 			Optional<User> userOptional = userRepository.findById(userId);
