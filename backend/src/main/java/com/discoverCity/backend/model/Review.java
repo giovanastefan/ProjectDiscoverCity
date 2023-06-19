@@ -2,6 +2,8 @@ package com.discoverCity.backend.model;
 
 import java.sql.Date;
 
+import org.hibernate.validator.constraints.Range;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -34,6 +36,7 @@ public class Review {
 	private String comment;
 	
 	@Column(name="nota")
+	@Range(min = 1, max = 5, message = "The rating value must be between 1 and 5")
 	private double rating;
 	
 	@Column(name="data_avaliacao")
